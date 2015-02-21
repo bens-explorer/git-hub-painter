@@ -20,15 +20,18 @@ hireme = [
 
 
 puts("Painting...")
+duplicator = 0
 
 hireme.each_with_index() do |weekday, index|
   date_to_commit = starting_date + (index*86400)
   weekday.each() do |number_of_commits|
     if number_of_commits != 0
       number_of_commits.times() do
-        system "touch another_commit"
+        duplicator = duplicator+1
+        system "touch another_commit#{duplicator}"
         system "git add ."
         system 'git commit --date=', date_to_commit.to_s, ' -m "Change date of commit."'
+        binding.pry
       end
     end
     date_to_commit = date_to_commit + (7*86400)
