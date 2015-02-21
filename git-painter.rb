@@ -18,7 +18,7 @@ hireme = [
 ]
 
 
-
+system "mkdir -p delete-this"
 puts("Painting...")
 duplicator = 0
 
@@ -28,9 +28,10 @@ hireme.each_with_index() do |weekday, index|
     if number_of_commits != 0
       number_of_commits.times() do
         duplicator = duplicator+1
-        system "touch another_commit#{duplicator}"
+        system "touch delete-this/another_commit#{duplicator}"
         system "git add ."
-        system 'git commit --date=', date_to_commit.to_s, ' -m "Change date of commit."'
+        date = date_to_commit.to_s
+        system("git commit --date=", date_to_commit.to_s, "-m 'Change date of commit.'")
         binding.pry
       end
     end
