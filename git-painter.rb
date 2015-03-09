@@ -31,7 +31,7 @@ hireme.each_with_index() do |weekday, index|
         system "touch delete-this/another_commit#{duplicator}"
         system "git add ."
         date = date_to_commit.to_s
-        system("git commit --date=", "#{date}", "-m 'Change date of commit.'")
+        system "git commit --date=", "#{date}", "-m 'Change date of commit.'"
       end
     end
     date_to_commit = date_to_commit + (7*86400)
